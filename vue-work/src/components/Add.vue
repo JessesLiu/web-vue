@@ -18,21 +18,24 @@
                 <input type="text" class="form-control" placeholder="email" v-model="customer.email">
             </div>
             <div class="form-group">
-                <label>部门</label>
-                <input type="text" class="form-control" placeholder="deptId" v-model="customer.deptId">
+                <label for="exampleFormControlSelect1">部门</label>
+                  <select class="form-control" v-model="customer.deptId" id="exampleFormControlSelect1">
+                    <option value="1" selected>研发部</option>
+                    <option value="2">UI部</option>
+                    <option value="3">营销部</option>
+                  </select>
             </div>
             <div class="form-group">
                 <label>性别</label>
-                <input type="text" class="form-control" placeholder="gender" v-model="customer.gender">
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" v-model="customer.gender" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0">
+                    <label class="form-check-label" for="inlineRadio1">男</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" v-model="customer.gender" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1">
+                    <label class="form-check-label" for="inlineRadio2">女</label>
+                  </div>
             </div>
-            <!-- <div class="form-group">
-                <label>职业</label>
-                <input type="text" class="form-control" placeholder="profession" v-model="customer.profession">
-            </div>
-            <div class="form-group">
-                <label>个人简介</label>
-                <textarea rows="10" class="form-control" v-model="customer.profile"></textarea>
-            </div> -->
             <button type="submit" class="btn btn-primary">添加</button>  
         </div>
     </form>

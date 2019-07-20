@@ -11,8 +11,15 @@
     <ul class="list-group">
         <li class="list-group-item"><span class="glyphicon glyphicon-asterisk"> {{customer.phone}}</span></li>
         <li class="list-group-item"><span class="glyphicon glyphicon-plus"> {{customer.email}}</span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-asterisk"> {{customer.deptId}}</span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-plus"> {{customer.gender}}</span></li>
+        <li class="list-group-item">
+          <span v-if="customer.deptId == 1" class="glyphicon glyphicon-asterisk"> 研发部</span>
+          <span v-if="customer.deptId == 2" class="glyphicon glyphicon-asterisk"> UI部</span>
+          <span v-if="customer.deptId == 3" class="glyphicon glyphicon-asterisk"> 营销部</span>
+        </li>
+        <li class="list-group-item">
+          <span v-if="customer.gender == 0" class="glyphicon glyphicon-plus"> 男</span>
+          <span v-if="customer.gender == 1" class="glyphicon glyphicon-plus"> 女</span>
+        </li>
     </ul>
   </div>
 </template>

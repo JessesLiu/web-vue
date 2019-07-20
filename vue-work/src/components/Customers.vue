@@ -2,6 +2,8 @@
   <div class="customers">
     <Alert v-if="alert" :message="alert"></Alert>
     <h1 class="page-header">用户管理系统</h1>
+    <input type="text" class="form-control" placeholder="搜索" v-model="filterInput">
+    <br>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -12,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(customer,index) in customers" :key="index">
+        <tr v-for="(customer,index) in filterBy(customers,filterInput)" :key="index">
           <td>{{customer.employeeName}}</td>
           <td>{{customer.phone}}</td>
           <td>{{customer.email}}</td>
@@ -30,7 +32,8 @@ export default {
   data () {
     return {
       customers:[],
-      alert:''
+      alert:'',
+      filterInput:""
     }
   },
   components:{
@@ -55,6 +58,13 @@ export default {
       .catch(function (error) {
         console.log(error)
       })
+
+    },
+    filterBy(customers,value){
+      // return customers.filter(function(customer){
+      //   return customer.employeeName.match(value);
+      // })
+      return customers.filter(customer=>customer.employeeName.match(value))
 
     }
   }
