@@ -65,7 +65,7 @@ export default {
             this.alert = "" 
             let newCustomer = this.customer
               
-            this.$axios.post('/api/employee/add',newCustomer)  
+            this.$axios.post('/api/auth/employee/add',newCustomer)
             .then((response) => {
                 console.log(response);
                 this.$router.push({path:'/',query:{alert:'用户信息添加成功！'}})

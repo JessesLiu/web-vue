@@ -54,7 +54,7 @@ export default {
   },
   methods:{
       getCustomerInfo(id){
-          this.$axios.get('/api/employee/get/'+id)
+          this.$axios.get('/api/auth/employee/get/'+id)
             .then((response) => {
                 console.log(response);
                 this.customer = response.data.res_data;
@@ -74,7 +74,7 @@ export default {
             updateCustomer.phone = this.customer.phone;
             updateCustomer.gender = this.customer.gender;
               
-            this.$axios.put('/api/employee/update/'+this.$route.params.id,updateCustomer)  
+            this.$axios.put('/api/auth/employee/update/'+this.$route.params.id,updateCustomer)
             .then((response) => {
                 console.log(response);
                 this.$router.push({path:'/',query:{alert:'用户信息更新成功！'}})

@@ -34,7 +34,7 @@ export default {
   },
   methods:{
     getCustomerInfo(id){
-      this.$axios.get('/api/employee/get/'+id)
+      this.$axios.get('/api/auth/employee/get/'+id)
       .then((response) => {
         console.log(response);
         this.customer = response.data.res_data;
@@ -46,7 +46,7 @@ export default {
     },
     deleteCustomer(id){
       console.log(id)
-      this.$axios.delete('/api/employee/delete/'+id)
+      this.$axios.delete('/api/auth/employee/delete/'+id)
       .then((response) => {
           this.$router.push({path: '/',query:{alert:"用户删除成功！"}});
       })

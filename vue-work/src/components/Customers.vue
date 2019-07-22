@@ -47,7 +47,7 @@ export default {
   },
   methods:{
     getList(){
-      this.$axios.post('/api/employee/list',{
+      this.$axios.post('/api/auth/employee/list',{
         pageNum:1,
         pageSize:10
       })
@@ -61,11 +61,12 @@ export default {
 
     },
     filterBy(customers,value){
+
       // return customers.filter(function(customer){
       //   return customer.employeeName.match(value);
       // })
-      return customers.filter(customer=>customer.employeeName.match(value))
 
+      return customers.filter(customer=>customer.employeeName.match(value))
     }
   }
 }

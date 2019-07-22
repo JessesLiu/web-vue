@@ -22,9 +22,8 @@ const router = new VueRouter({
 const REQUEST_HOST = 'http://182.61.167.75:8080';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.interceptors.request.use(
-    config => {
-        let token = localStorage.getItem("x-auth-token");
+axios.interceptors.request.use(config => {
+        let token = localStorage.getItem("auth-token");
         if (token) {
             config.headers.token = token;
         }
@@ -33,6 +32,19 @@ axios.interceptors.request.use(
         }
         return config;
     });
+axios.interceptors.response.use(response =>{
+
+        return response;
+    },error =>{
+      console.error(error.response)
+      let {status} = error.response;
+      if (status === 403) {
+        localStorage.removeItem("auth-token")
+        router.replace("/login")
+      }
+      return Promise.reject(error)
+  })
+
 
 /* eslint-disable no-new */
 new Vue({
